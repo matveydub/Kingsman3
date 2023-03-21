@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Kingsman.Windows.Admin;
+using Kingsman.Windows.Client;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,22 @@ namespace Kingsman
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ServiceWindow serviceWindow = new ServiceWindow();
+            this.Hide();
+            serviceWindow.ShowDialog();
+            this.Show();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            ClientsWindow clientsWindow = new ClientsWindow();
+            this.Hide();
+            clientsWindow.ShowDialog();
+            this.Show();
         }
     }
 }

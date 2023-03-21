@@ -34,10 +34,9 @@ namespace Kingsman.Windows
 
             if (userAuth != null)
             {
-                ClientsWindow clientsWindow = new ClientsWindow();
-                this.Hide();
-                clientsWindow.ShowDialog();
-                this.Show();
+                MainWindow mainWindow = new MainWindow();
+                this.Close();
+                mainWindow.ShowDialog();
             }
             else
             {

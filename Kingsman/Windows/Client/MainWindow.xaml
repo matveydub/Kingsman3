@@ -7,6 +7,13 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <StackPanel>
+            <Button Content="Окно услуг"
+                    Click="Button_Click"/>
+            <Button Content="Список клиентов"
+                    Click="Button_Click_1"/>
+       </StackPanel>
+        
         
     </Grid>
 </Window>
