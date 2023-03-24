@@ -1,4 +1,5 @@
 ﻿using Kingsman.Windows.Admin;
+using Kingsman.Windows.Client;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,6 +44,14 @@ namespace Kingsman.Windows
                 MessageBox.Show("Неправильно введен логин или пароль", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             
+        }
+
+        private void BtnReg_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            RegistrationWindow registrationWindow = new RegistrationWindow();
+            this.Hide();
+            registrationWindow.ShowDialog();
+            this.Show();
         }
     }
 }
