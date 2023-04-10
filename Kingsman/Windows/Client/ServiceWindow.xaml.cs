@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Kingsman.Windows.Admin;
+using Kingsman.Windows.Employee;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,6 +29,29 @@ namespace Kingsman.Windows.Client
         public void GetListService()
         {
             LvService.ItemsSource = ClassHelper.EF.Context.Service.ToList();
+        }
+
+        private void BtnAddService_Click(object sender, RoutedEventArgs e)
+        {
+            AddServiceWindow serviceWindow = new AddServiceWindow();
+            this.Close();
+            serviceWindow.ShowDialog();
+            GetListService();
+        }
+
+        private void BtnRedactService_Click(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+
+            if (button == null)
+            {
+                return;
+            }
+            var service = button.DataContext as DB.Service;
+
+            RedactServiceWindow redactServiceWindow = new RedactServiceWindow(service);
+            redactServiceWindow.ShowDialog();
+            GetListService();
         }
     }
 }

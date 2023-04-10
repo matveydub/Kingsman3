@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Kingsman.DB;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,16 +30,16 @@ namespace Kingsman.Windows.Admin
             //listPerson.Add(person1);
             //listPerson.Add(person2);
             //listPerson.Add(person3);
-            Window_Loaded();
+            DgClients.ItemsSource = ClassHelper.EF.Context.Client.ToList();
         }
-        private void Window_Loaded()
-        {
-            var query =
-            from client in ClassHelper.EF.Context.Client
-            select new {client.FirstName, client.LastName, client.Patronymic, client.Phone};
+        //private void Window_Loaded()
+        //{
+        //    var query =
+        //    from client in ClassHelper.EF.Context.Client
+        //    select new {client.FirstName, client.LastName, client.Patronymic, client.Phone};
 
-            DgClients.ItemsSource = query.ToList();
-        }
+        //    DgClients.ItemsSource = query.ToList();
+        //}
         //public void getPerson()
         //{
         //    DgClients.ItemsSource = listPerson;

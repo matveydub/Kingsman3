@@ -38,6 +38,7 @@ namespace Kingsman.Windows
                 MainWindow mainWindow = new MainWindow();
                 this.Close();
                 mainWindow.ShowDialog();
+
             }
             else
             {

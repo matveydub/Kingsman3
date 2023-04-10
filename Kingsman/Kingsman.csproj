@@ -128,6 +128,9 @@
     <Compile Include="Windows\Admin\ActionHistoryWindow.xaml.cs">
       <DependentUpon>ActionHistoryWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Admin\AddServiceWindow.xaml.cs">
+      <DependentUpon>AddServiceWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Admin\ClientsWindow.xaml.cs">
       <DependentUpon>ClientsWindow.xaml</DependentUpon>
     </Compile>
@@ -173,10 +176,17 @@
     <Compile Include="Windows\Employee\MasterScheduleWindow.xaml.cs">
       <DependentUpon>MasterScheduleWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Employee\RedactServiceWindow.xaml.cs">
+      <DependentUpon>RedactServiceWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Employee\StockWindow.xaml.cs">
       <DependentUpon>StockWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="Windows\Admin\ActionHistoryWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Admin\AddServiceWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -252,6 +262,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\Employee\RedactServiceWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\Employee\StockWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -305,6 +319,12 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="Res\icons8-business-group-100.png" />
+    <Resource Include="Res\icons8-customers-58.png" />
+    <Resource Include="Res\icons8-services-64.png" />
+    <Resource Include="Res\pencilRedactImage.png" />
+    <Resource Include="Windows\Client\icons8-add-new-96.png" />
+    <Resource Include="Res\icons8-add-new-96.png" />
     <Resource Include="Res\ServiceImage\kostyum_troyka_002.jpg" />
     <Resource Include="Res\ServiceImage\HTB1BoFMKVXXXXamaXXXq6xXFXXXc.jpg" />
   </ItemGroup>

@@ -5,8 +5,91 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kingsman.Windows.Admin"
         mc:Ignorable="d"
-        Title="EmployeesWindow" Height="450" Width="800">
+        Title="EmployeesWindow" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FFC4DDEA" Offset="0.036"/>
+            <GradientStop Color="#FFA7E0FF" Offset="0.273"/>
+            <GradientStop Color="#FF398ECD" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="33*"/>
+            <ColumnDefinition Width="48*"/>
+            <ColumnDefinition Width="121*"/>
+            <ColumnDefinition Width="133*"/>
+            <ColumnDefinition Width="114*"/>
+            <ColumnDefinition Width="141*"/>
+            <ColumnDefinition Width="49*"/>
+            <ColumnDefinition Width="161*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Horizontal"
+                    Margin="0,20,0,0"
+                    Grid.Column="1" 
+                    Grid.ColumnSpan="7">
+            <TextBlock Text="ID"
+                       Grid.Row="1"/>
+            <TextBlock Text="Фамилия"
+                       Margin="50 0 0 0"
+                       Grid.Row="2"/>
+            <TextBlock Text="Имя"
+                       Margin="50 0 0 0"/>
+            <TextBlock Text="Отчество"
+                       Margin="50 0 0 0"/>
+            <TextBlock Text="Телефон"
+                       Margin="50 0 0 0"/>
+        </StackPanel>
+        <ListView x:Name="LvEmployee"
+                  d:ItemsSource="{d:SampleData ItemCount=5}"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                  Margin="20,40,20,0"
+                  Height="350"
+                  VerticalAlignment="Top" Grid.ColumnSpan="8">
+
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel HorizontalAlignment="Center"
+                                Width="755"
+                                ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <StackPanel Orientation="Horizontal" >
+                            <TextBlock Text="{Binding ID}"
+                                       Margin="5 0 40 0"
+                                       Foreground="DarkGray"
+                                       FontSize="18"/>
+                            <TextBlock Text="{Binding LastName}"
+                                       Margin="0 0 20 0"
+                                       FontSize="18"/>
+                            <TextBlock Text="{Binding FirstName}"
+                                       Margin="5 0 20 0"
+                                       FontSize="18"/>
+                            <TextBlock Margin="0 0 40 0"
+                                       FontSize="18">
+                                <TextBlock.Text>
+                                    <Binding Path="Patronymic">
+                                        <Binding.TargetNullValue>
+                                            --Отсутствует--
+                                        </Binding.TargetNullValue>
+                                    </Binding>
+                                </TextBlock.Text>
+                            </TextBlock>
+                            <TextBlock Text="{Binding Phone}"
+                                       Margin="5 0 40 0"
+                                       FontSize="18"/>
+                            <TextBlock Text="{Binding GenderCode}"
+                                       Margin="5 0 40 0"
+                                       FontSize="18"/>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Window>

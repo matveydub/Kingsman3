@@ -5,15 +5,76 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kingsman"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Main Window" Height="300" Width="600"
+        WindowStartupLocation="CenterScreen">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FFC4DDEA" Offset="0.036"/>
+            <GradientStop Color="#FFA7E0FF" Offset="0.273"/>
+            <GradientStop Color="#FF398ECD" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
     <Grid>
-        <StackPanel>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="50*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50*"/>
+            <ColumnDefinition Width="50*"/>
+            <ColumnDefinition Width="50*"/>
+        </Grid.ColumnDefinitions>
+        <WrapPanel HorizontalAlignment="Center"
+                   VerticalAlignment="Center">
+            <Border BorderThickness="0.5"
+                    BorderBrush="Black"
+                    Height="39">
+                <Image Source="/Res/icons8-services-64.png"
+                   Height="39"/>
+            </Border>
             <Button Content="Окно услуг"
-                    Click="Button_Click"/>
+                    Click="Button_Click"
+                Width="120"
+                    Background="LightCyan"
+                Height="40"/>
+        </WrapPanel>
+        <WrapPanel Grid.Column="1"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center">
+            <Border BorderThickness="0.5"
+                    BorderBrush="Black"
+                    Height="39">
+                <Image Source="/Res/icons8-customers-58.png" 
+                       Height="39"/>
+
+            </Border>
             <Button Content="Список клиентов"
-                    Click="Button_Click_1"/>
-       </StackPanel>
-        
-        
+                    Click="Button_Click_1"
+                    Grid.Column="1"
+                    Width="120"
+                    Background="LightCyan"
+                Height="40"/>
+            
+        </WrapPanel>
+        <WrapPanel Grid.Column="2"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center">
+            <Border BorderThickness="0.5"
+                    BorderBrush="Black"
+                    Height="39">
+                <Image Source="/Res/icons8-business-group-100.png" 
+                       Height="39"/>
+
+            </Border>
+            <Button Content="Список сотрудников"
+                    Click="Button_Click_2"
+                    Grid.Column="1"
+                    Width="120"
+                    Background="LightCyan"
+                Height="40"/>
+
+        </WrapPanel>
+
     </Grid>
 </Window>

@@ -22,6 +22,7 @@ namespace Kingsman.Windows.Admin
         public EmployeesWindow()
         {
             InitializeComponent();
+            LvEmployee.ItemsSource = ClassHelper.EF.Context.Employee.ToList();
         }
     }
 }

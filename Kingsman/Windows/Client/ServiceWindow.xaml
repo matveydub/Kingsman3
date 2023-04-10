@@ -11,7 +11,7 @@
             <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>
             <RowDefinition Height="10*"/>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
         <TextBlock Text="Список услуг"
                    HorizontalAlignment="Center"
@@ -30,31 +30,54 @@
             
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Border Height="200"
+                    <Grid>
+                        <Border Height="230"
                             Width="150"
                             Margin="5"
                             BorderThickness="2"
                             BorderBrush="Brown">
-                        <StackPanel>
-                            <Image Height="125"
+                            <StackPanel>
+                                <Image Height="125"
                                    Width="135"
                                    Margin="5">
-                                <Image.Source>
-                                    <Binding Path="Image">
-                                        <Binding.TargetNullValue>
-                                            <ImageSource>/Res/ServiceImage/kostyum_troyka_002.jpg</ImageSource>
-                                        </Binding.TargetNullValue>
-                                    </Binding>
-                                </Image.Source>
-                            </Image>
-                            <TextBlock Text="{Binding ServiceName}"/>
-                            <TextBlock Text="{Binding Price}"/>
-                            <TextBlock Text="{Binding Description}"
-                                       TextWrapping="Wrap"/>
-                        </StackPanel>
-                    </Border>
+                                    <Image.Source>
+                                        <Binding Path="Image">
+                                            <Binding.TargetNullValue>
+                                                <ImageSource>/Res/ServiceImage/kostyum_troyka_002.jpg</ImageSource>
+                                            </Binding.TargetNullValue>
+                                        </Binding>
+                                    </Image.Source>
+                                </Image>
+                                <TextBlock Text="{Binding ServiceName}"/>
+                                <TextBlock Text="{Binding Price}"/>
+                                <TextBlock Text="{Binding Description}"
+                                       TextWrapping="Wrap"
+                                       Margin="0 0 28 0"/>
+                            </StackPanel>
+                        </Border>
+                        <Button x:Name="BtnRedactService"
+                                    Width="20"
+                                    Height="20"
+                                    HorizontalAlignment="Right"
+                                VerticalAlignment="Bottom"
+                                Margin="10"
+                                    Click="BtnRedactService_Click"
+                                    Background="{x:Null}"
+                                    BorderThickness="0">
+                            <Image Source="\Res\pencilRedactImage.png"/>
+                        </Button>
+                    </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <Button Grid.Row="3"
+                x:Name="BtnAddService"
+                Click="BtnAddService_Click"
+                HorizontalAlignment="Right"
+                Margin="0 0 30 0"
+                BorderThickness="0"
+                Background="{x:Null}">
+            <Image Source="/Windows/Client/icons8-add-new-96.png"/>
+        </Button>
     </Grid>
 </Window>

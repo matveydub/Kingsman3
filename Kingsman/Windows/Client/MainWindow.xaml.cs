@@ -42,5 +42,13 @@ namespace Kingsman
             clientsWindow.ShowDialog();
             this.Show();
         }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            EmployeesWindow employeesWindow = new EmployeesWindow();
+            this.Hide();
+            employeesWindow.ShowDialog();
+            this.Show();  
+        }
     }
 }

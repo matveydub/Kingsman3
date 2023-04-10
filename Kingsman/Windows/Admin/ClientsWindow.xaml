@@ -5,10 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kingsman.Windows.Admin"
         mc:Ignorable="d"
-        Title="ClientsWindow" Height="450" Width="800">
+        Title="ClientsWindow" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FFC4DDEA" Offset="0.036"/>
+            <GradientStop Color="#FFA7E0FF" Offset="0.273"/>
+            <GradientStop Color="#FF398ECD" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
     <Grid>
-        <DataGrid x:Name="DgClients">
-            
+        <DataGrid x:Name="DgClients"
+                  Margin="20"
+                  AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Имя" Binding="{Binding FirstName}"/>
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding LastName}"/>
+                <DataGridTextColumn Header="Отчетство" Binding="{Binding Patronymic}"/>
+                <DataGridTextColumn Header="Телефон" Binding="{Binding Phone}"/>
+                <DataGridTextColumn Header="Пол" Binding="{Binding GenderCode}"/>
+                <DataGridTextColumn Header="Логин" Binding="{Binding Login}"/>
+                <DataGridTextColumn Header="Пароль" Binding="{Binding Password}"/>
+            </DataGrid.Columns>
         </DataGrid>
     </Grid>
 </Window>
