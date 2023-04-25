@@ -21,7 +21,7 @@ namespace Kingsman.Windows
     /// </summary>
     public partial class Window1 : Window
     {
-        
+        public DB.Client userAuth;
         public Window1()
         {
             InitializeComponent();
@@ -29,7 +29,7 @@ namespace Kingsman.Windows
 
         private void BtnSignIn_Click(object sender, RoutedEventArgs e)
         {
-            var userAuth = ClassHelper.EF.Context.Client.ToList().
+            userAuth = ClassHelper.EF.Context.Client.ToList().
                 Where(i => i.Login == TbLogin.Text && i.Password == PbPassword.Password).
                 FirstOrDefault();
 

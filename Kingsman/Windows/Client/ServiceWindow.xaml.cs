@@ -1,4 +1,5 @@
-﻿using Kingsman.Windows.Admin;
+﻿using Kingsman.ClassHelper;
+using Kingsman.Windows.Admin;
 using Kingsman.Windows.Employee;
 using System;
 using System.Collections.Generic;
@@ -52,6 +53,29 @@ namespace Kingsman.Windows.Client
             RedactServiceWindow redactServiceWindow = new RedactServiceWindow(service);
             redactServiceWindow.ShowDialog();
             GetListService();
+        }
+
+        private void BtnAddToCart_Click(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+
+            if (button == null)
+            {
+                return;
+            }
+            var service = button.DataContext as DB.Service;
+
+            service.Count++;
+            ServiceCartClass.serviceCart.Add(service);
+
+        }
+
+        private void BtnServiceCart_Click(object sender, RoutedEventArgs e)
+        {
+            ServiceCartWidow serviceCartWidow = new ServiceCartWidow();
+            this.Hide();
+            serviceCartWidow.ShowDialog();
+            this.Show();
         }
     }
 }
