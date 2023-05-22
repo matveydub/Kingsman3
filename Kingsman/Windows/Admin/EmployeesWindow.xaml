@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kingsman.Windows.Admin"
         mc:Ignorable="d"
-        Title="EmployeesWindow" Height="450" Width="800"
+        Title="EmployeesWindow" Height="450" Width="830"
         WindowStartupLocation="CenterScreen">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -15,81 +15,132 @@
         </LinearGradientBrush>
     </Window.Background>
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="33*"/>
-            <ColumnDefinition Width="48*"/>
-            <ColumnDefinition Width="121*"/>
-            <ColumnDefinition Width="133*"/>
-            <ColumnDefinition Width="114*"/>
-            <ColumnDefinition Width="141*"/>
-            <ColumnDefinition Width="49*"/>
-            <ColumnDefinition Width="161*"/>
-        </Grid.ColumnDefinitions>
-        <StackPanel Orientation="Horizontal"
-                    Margin="0,20,0,0"
-                    Grid.Column="1" 
-                    Grid.ColumnSpan="7">
+        <Grid Margin="30,20,20,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="110"/>
+                <ColumnDefinition Width="110"/>
+                <ColumnDefinition Width="160"/>
+                <ColumnDefinition Width="160"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
             <TextBlock Text="ID"
-                       Grid.Row="1"/>
+                   Grid.Column="0"
+                       HorizontalAlignment="Center"/>
             <TextBlock Text="Фамилия"
-                       Margin="50 0 0 0"
-                       Grid.Row="2"/>
+                       Grid.Column="1"
+                       HorizontalAlignment="Center"/>
             <TextBlock Text="Имя"
-                       Margin="50 0 0 0"/>
+                       Grid.Column="2"
+                       HorizontalAlignment="Center"/>
             <TextBlock Text="Отчество"
-                       Margin="50 0 0 0"/>
+                       Grid.Column="3"
+                       HorizontalAlignment="Center"/>
             <TextBlock Text="Телефон"
-                       Margin="50 0 0 0"/>
-        </StackPanel>
+                       Grid.Column="4"
+                       HorizontalAlignment="Center"/>
+            <TextBlock Text="Пол"
+                       Grid.Column="5"
+                       HorizontalAlignment="Left"
+                       Margin="0 0 0 0"/>
+            <TextBlock Text="Должность"
+                       Grid.Column="6"
+                       HorizontalAlignment="Center"
+                       Margin="0 0 0 0"/>
+        </Grid>
         <ListView x:Name="LvEmployee"
                   d:ItemsSource="{d:SampleData ItemCount=5}"
-                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                  Margin="20,40,20,0"
-                  Height="350"
-                  VerticalAlignment="Top" Grid.ColumnSpan="8">
+                  ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                  Margin="20,40,20,80"
+                  Height="330"
+                  VerticalAlignment="Top">
 
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <StackPanel HorizontalAlignment="Center"
-                                Width="755"
-                                ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
+                    <StackPanel Focusable="False"/>
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
 
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Grid>
-                        <StackPanel Orientation="Horizontal" >
-                            <TextBlock Text="{Binding ID}"
-                                       Margin="5 0 40 0"
+                    <Grid Margin="0 0 0 10" Width="776">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="60"/>
+                            <ColumnDefinition Width="110"/>
+                            <ColumnDefinition Width="110"/>
+                            <ColumnDefinition Width="160"/>
+                            <ColumnDefinition Width="160"/>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="90"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{Binding ID}"
                                        Foreground="DarkGray"
-                                       FontSize="18"/>
-                            <TextBlock Text="{Binding LastName}"
-                                       Margin="0 0 20 0"
-                                       FontSize="18"/>
-                            <TextBlock Text="{Binding FirstName}"
-                                       Margin="5 0 20 0"
-                                       FontSize="18"/>
-                            <TextBlock Margin="0 0 40 0"
-                                       FontSize="18">
-                                <TextBlock.Text>
-                                    <Binding Path="Patronymic">
-                                        <Binding.TargetNullValue>
-                                            --Отсутствует--
-                                        </Binding.TargetNullValue>
-                                    </Binding>
-                                </TextBlock.Text>
-                            </TextBlock>
-                            <TextBlock Text="{Binding Phone}"
-                                       Margin="5 0 40 0"
-                                       FontSize="18"/>
-                            <TextBlock Text="{Binding GenderCode}"
-                                       Margin="5 0 40 0"
-                                       FontSize="18"/>
-                        </StackPanel>
+                                       FontSize="15"
+                                   Grid.Column="0"
+                                   HorizontalAlignment="Center"/>
+                        <TextBlock Text="{Binding LastName}"
+                                       FontSize="15"
+                                   Grid.Column="1"
+                                   HorizontalAlignment="Center"/>
+                        <TextBlock Text="{Binding FirstName}"
+                                   HorizontalAlignment="Center"
+                                       FontSize="15"
+                                   Grid.Column="2"/>
+                        <TextBlock HorizontalAlignment="Center"
+                                       FontSize="15"
+                                   Grid.Column="3">
+                            <TextBlock.Text>
+                                <Binding Path="Patronymic">
+                                    <Binding.TargetNullValue>
+                                        --Отсутствует--
+                                    </Binding.TargetNullValue>
+                                </Binding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                        <TextBlock Text="{Binding Phone}"
+                                   HorizontalAlignment="Center"
+                                       FontSize="15"
+                                   Grid.Column="4"/>
+                        <TextBlock Text="{Binding GenderCode}"
+                                   HorizontalAlignment="Left"
+                                       FontSize="15"
+                                   Grid.Column="5"/>
+
+                        <TextBlock Text="{Binding PositionID}"
+                                   HorizontalAlignment="Left"
+                                       FontSize="15"
+                                   Grid.Column="6"/>
+
+                        <Button x:Name="BtnRedactUser"
+                                Width="20"
+                                Height="20"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Click="BtnRedactUser_Click"
+                                Grid.ColumnSpan="7">
+                            <Image Source="\Res\pencilRedactImage.png"/>
+                        </Button>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+
+        <Button x:Name="BtnAddNewEmployee"
+                                Width="50"
+                                Height="50"
+                                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                Margin="0 0 20 10"
+                Background="White"
+                BorderThickness="0"
+                Click="BtnAddNewEmployee_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+            <Image Source="\Res\icons8-add-new-96.png"/>
+        </Button>
     </Grid>
 </Window>

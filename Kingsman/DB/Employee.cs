@@ -27,6 +27,8 @@ namespace Kingsman.DB
         public string Patronymic { get; set; }
         public string Phone { get; set; }
         public string GenderCode { get; set; }
+        public string Login { get; set; }
+        public string Password { get; set; }
     
         public virtual Gender Gender { get; set; }
         public virtual Position Position { get; set; }

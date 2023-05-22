@@ -67,6 +67,7 @@
     <Compile Include="ClassHelper\EF.cs" />
     <Compile Include="ClassHelper\Service.cs" />
     <Compile Include="ClassHelper\ServiceCartClass.cs" />
+    <Compile Include="ClassHelper\TotalSum.cs" />
     <Compile Include="DB\Client.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -106,6 +107,9 @@
     <Compile Include="DB\Position.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="DB\SalesReports.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="DB\Service.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -136,11 +140,23 @@
     <Compile Include="Windows\Admin\ClientsWindow.xaml.cs">
       <DependentUpon>ClientsWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Admin\EmployeeRegistrationWindow.xaml.cs">
+      <DependentUpon>EmployeeRegistrationWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Admin\EmployeesWindow.xaml.cs">
       <DependentUpon>EmployeesWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Admin\OrderMaterialWindow.xaml.cs">
       <DependentUpon>OrderMaterialWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Admin\RedactClientWindow.xaml.cs">
+      <DependentUpon>RedactClientWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Admin\RedactEmployeeWindow.xaml.cs">
+      <DependentUpon>RedactEmployeeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Admin\ReportsWindow.xaml.cs">
+      <DependentUpon>ReportsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\AuthWindow.xaml.cs">
       <DependentUpon>AuthWindow.xaml</DependentUpon>
@@ -199,11 +215,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\Admin\EmployeeRegistrationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\Admin\EmployeesWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\Admin\OrderMaterialWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Admin\RedactClientWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Admin\RedactEmployeeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Admin\ReportsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -328,13 +360,13 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="Res\report.png" />
     <Resource Include="Res\icons8-shopping-cart-64.png" />
     <Resource Include="Res\bin.png" />
     <Resource Include="Res\icons8-business-group-100.png" />
     <Resource Include="Res\icons8-customers-58.png" />
     <Resource Include="Res\icons8-services-64.png" />
     <Resource Include="Res\pencilRedactImage.png" />
-    <Resource Include="Windows\Client\icons8-add-new-96.png" />
     <Resource Include="Res\icons8-add-new-96.png" />
     <Resource Include="Res\ServiceImage\kostyum_troyka_002.jpg" />
     <Resource Include="Res\ServiceImage\HTB1BoFMKVXXXXamaXXXq6xXFXXXc.jpg" />

@@ -12,21 +12,24 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Kingsman.Windows.Client
+namespace Kingsman.Windows.Admin
 {
     /// <summary>
-    /// Логика взаимодействия для RegistrationWindow.xaml
+    /// Логика взаимодействия для EmployeeRegistrationWindow.xaml
     /// </summary>
-    public partial class RegistrationWindow : Window
+    public partial class EmployeeRegistrationWindow : Window
     {
-        public RegistrationWindow()
+        public EmployeeRegistrationWindow()
         {
             InitializeComponent();
+
             CmbGender.ItemsSource = ClassHelper.EF.Context.Gender.ToList();
             CmbGender.DisplayMemberPath = "GenderName";
             CmbGender.SelectedIndex = 0;
 
-
+            CmbPosition.ItemsSource = ClassHelper.EF.Context.Position.ToList();
+            CmbPosition.DisplayMemberPath = "PositionName";
+            CmbPosition.SelectedIndex = 0;
         }
 
         private void BtnSignIn_Click(object sender, RoutedEventArgs e)
@@ -58,23 +61,24 @@ namespace Kingsman.Windows.Client
                 return;
             }
             //Cjpasdf GOod boy
-            DB.Client addClient = new DB.Client();
-            addClient.Login = TbLogin.Text;
-            addClient.Password = PbPassword.Password;
-            addClient.FirstName = TbFirstName.Text;
-            addClient.LastName = TbLastName.Text;
+            DB.Employee addEmployee = new DB.Employee();
+            addEmployee.Login = TbLogin.Text;
+            addEmployee.Password = PbPassword.Password;
+            addEmployee.FirstName = TbFirstName.Text;
+            addEmployee.LastName = TbLastName.Text;
             if (TbPatronymic.Text != string.Empty)
             {
-                addClient.Patronymic = TbPatronymic.Text;
+                addEmployee.Patronymic = TbPatronymic.Text;
             }
-            addClient.Phone = TbPhone.Text;
-            addClient.GenderCode = (CmbGender.SelectedItem as DB.Gender).GenderCode;
-            ClassHelper.EF.Context.Client.Add(addClient);
+            addEmployee.Phone = TbPhone.Text;
+            addEmployee.GenderCode = (CmbGender.SelectedItem as DB.Gender).GenderCode;
+            addEmployee.PositionID = (CmbPosition.SelectedItem as DB.Position).ID;
+            ClassHelper.EF.Context.Employee.Add(addEmployee);
 
             //Confirmation
             ClassHelper.EF.Context.SaveChanges();
-            MessageBox.Show("Регистрация успешна!");
-            this.Close();
+            MessageBox.Show("Регистрация сотрудника успешна!");
+            this.Close(); 
         }
     }
 }

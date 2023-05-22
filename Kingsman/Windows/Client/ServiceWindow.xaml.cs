@@ -65,6 +65,7 @@ namespace Kingsman.Windows.Client
             }
             var service = button.DataContext as DB.Service;
 
+            
             service.Count++;
             ServiceCartClass.serviceCart.Add(service);
 

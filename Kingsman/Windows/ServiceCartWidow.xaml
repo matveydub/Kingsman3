@@ -19,7 +19,16 @@
                    VerticalAlignment="Center"
                    FontSize="30"
                    FontWeight="Bold"/>
-        <Button Name="BtnBack"
+        <StackPanel HorizontalAlignment="Right"
+                   Grid.Row="1"
+                   VerticalAlignment="Center"
+                    Orientation="Horizontal">
+            <TextBlock x:Name="TbTotalSum"
+                   Height="40"
+                Margin="0 4 20 0"
+                       Text="0"
+                       FontSize="25"/>
+            <Button Name="BtnBack"
                 Content="Назад"
                 Grid.Row="1"
                 Width="70"
@@ -28,6 +37,7 @@
                 Margin="0 0 10 0"
                 Click="BtnBack_Click"
                 FontSize="20"/>
+        </StackPanel>
         <ListView Grid.Row="2" 
                   x:Name="LvServiceCart"
                   d:ItemsSource="{d:SampleData ItemCount=5}"

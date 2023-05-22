@@ -13,7 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using Kingsman.ClassHelper;
 using Kingsman.DB;
 
 namespace Kingsman.Windows
@@ -27,12 +27,19 @@ namespace Kingsman.Windows
         {
             InitializeComponent();
             SetListViewItems();
+
         }
 
         public void SetListViewItems() 
         {
             ObservableCollection<DB.Service> listCart = new ObservableCollection<DB.Service>(ClassHelper.ServiceCartClass.serviceCart);
             LvServiceCart.ItemsSource = listCart.Distinct();
+            TotalSum.totalSum = 0;
+            foreach (var item in ClassHelper.ServiceCartClass.serviceCart)
+            {
+                TotalSum.totalSum += Convert.ToInt32(item.Price) * item.Count;
+            }
+            TbTotalSum.Text = Convert.ToString(TotalSum.totalSum) + " ₽";
         }
 
         private void BtnDeleteCart_Click(object sender, RoutedEventArgs e)
@@ -45,9 +52,9 @@ namespace Kingsman.Windows
             }
             var service = button.DataContext as DB.Service;
 
-            service.Count = 0;
-
             ClassHelper.ServiceCartClass.serviceCart.Remove(service);
+
+            service.Count = 0;
 
             SetListViewItems();
         }

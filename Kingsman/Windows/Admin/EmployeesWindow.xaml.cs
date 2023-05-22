@@ -24,5 +24,27 @@ namespace Kingsman.Windows.Admin
             InitializeComponent();
             LvEmployee.ItemsSource = ClassHelper.EF.Context.Employee.ToList();
         }
+
+        private void BtnRedactUser_Click(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+
+            if (button == null)
+            {
+                return;
+            }
+            var employee = button.DataContext as DB.Employee;
+
+
+            RedactEmployeeWindow redactEmployeeWindow = new RedactEmployeeWindow(employee);
+            redactEmployeeWindow.Show();
+            this.Close();
+        }
+
+        private void BtnAddNewEmployee_Click(object sender, RoutedEventArgs e)
+        {
+            EmployeeRegistrationWindow employeeRegistration = new EmployeeRegistrationWindow();
+            employeeRegistration.ShowDialog();
+        }
     }
 }

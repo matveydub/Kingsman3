@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kingsman.Windows.Admin"
         mc:Ignorable="d"
-        Title="ClientsWindow" Height="450" Width="800"
-        WindowStartupLocation="CenterScreen">
+        Title="ClientsWindow" Height="450" Width="830"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             <GradientStop Color="#FFC4DDEA" Offset="0.036"/>
@@ -15,18 +16,122 @@
         </LinearGradientBrush>
     </Window.Background>
     <Grid>
-        <DataGrid x:Name="DgClients"
-                  Margin="20"
-                  AutoGenerateColumns="False">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Имя" Binding="{Binding FirstName}"/>
-                <DataGridTextColumn Header="Фамилия" Binding="{Binding LastName}"/>
-                <DataGridTextColumn Header="Отчетство" Binding="{Binding Patronymic}"/>
-                <DataGridTextColumn Header="Телефон" Binding="{Binding Phone}"/>
-                <DataGridTextColumn Header="Пол" Binding="{Binding GenderCode}"/>
-                <DataGridTextColumn Header="Логин" Binding="{Binding Login}"/>
-                <DataGridTextColumn Header="Пароль" Binding="{Binding Password}"/>
-            </DataGrid.Columns>
-        </DataGrid>
+        <Grid Margin="30,20,20,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="110"/>
+                    <ColumnDefinition Width="110"/>
+                    <ColumnDefinition Width="160"/>
+                    <ColumnDefinition Width="160"/>
+                    <ColumnDefinition Width="70"/>
+                </Grid.ColumnDefinitions>
+            <TextBlock Text="ID"
+                   Grid.Column="0"
+                       HorizontalAlignment="Center"/>
+            <TextBlock Text="Фамилия"
+                       Grid.Column="1"
+                       HorizontalAlignment="Center"/>
+            <TextBlock Text="Имя"
+                       Grid.Column="2"
+                       HorizontalAlignment="Center"/>
+            <TextBlock Text="Отчество"
+                       Grid.Column="3"
+                       HorizontalAlignment="Center"/>
+            <TextBlock Text="Телефон"
+                       Grid.Column="4"
+                       HorizontalAlignment="Center"/>
+            <TextBlock Text="Пол"
+                       Grid.Column="5"
+                       HorizontalAlignment="Center"/>
+        </Grid>
+        <ListView x:Name="LvClient"
+                  d:ItemsSource="{d:SampleData ItemCount=5}"
+                  ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                  Margin="20,40,20,70"
+                  Height="330"
+                  VerticalAlignment="Top">
+
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="60"/>
+                            <ColumnDefinition Width="110"/>
+                            <ColumnDefinition Width="110"/>
+                            <ColumnDefinition Width="160"/>
+                            <ColumnDefinition Width="160"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{Binding ID}"
+                                       Foreground="DarkGray"
+                                       FontSize="15"
+                                   Grid.Column="0"
+                                   HorizontalAlignment="Center"/>
+                        <TextBlock Text="{Binding LastName}"
+                                       FontSize="15"
+                                   Grid.Column="1"
+                                   HorizontalAlignment="Center"/>
+                        <TextBlock Text="{Binding FirstName}"
+                                   HorizontalAlignment="Center"
+                                       FontSize="15"
+                                   Grid.Column="2"/>
+                        <TextBlock HorizontalAlignment="Center"
+                                       FontSize="15"
+                                   Grid.Column="3">
+                            <TextBlock.Text>
+                                <Binding Path="Patronymic">
+                                    <Binding.TargetNullValue>
+                                        --Отсутствует--
+                                    </Binding.TargetNullValue>
+                                </Binding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                        <TextBlock Text="{Binding Phone}"
+                                   HorizontalAlignment="Center"
+                                       FontSize="15"
+                                   Grid.Column="4"/>
+                        <TextBlock Text="{Binding GenderCode}"
+                                   HorizontalAlignment="Center"
+                                       FontSize="15"
+                                   Grid.Column="5"
+                                   Margin="0 0 10 0"/>
+
+                        <Button x:Name="BtnRedactUser"
+                                Width="20"
+                                Height="20"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Margin="0 5 0 10"
+                                Grid.Column="5"
+                                Click="BtnRedactUser_Click">
+                            <Image Source="\Res\pencilRedactImage.png"/>
+                        </Button>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Button x:Name="BtnAddNewClient"
+                                Width="50"
+                                Height="50"
+                                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                Margin="0 0 20 10"
+                Background="White"
+                BorderThickness="0"
+                Click="BtnAddNewClient_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+            <Image Source="\Res\icons8-add-new-96.png"/>
+        </Button>
     </Grid>
 </Window>

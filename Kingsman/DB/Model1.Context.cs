@@ -40,6 +40,7 @@ namespace Kingsman.DB
         public virtual DbSet<Supplier> Supplier { get; set; }
         public virtual DbSet<SuppliesDelivery> SuppliesDelivery { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<SalesReports> SalesReports { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {
